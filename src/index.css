@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 228 21% 6%;
+    --foreground: 40 24% 96%;
+
+    --card: 230 19% 10%;
+    --card-foreground: 40 24% 96%;
+
+    --popover: 230 19% 10%;
+    --popover-foreground: 40 24% 96%;
+
+    --primary: 39 96% 60%;
+    --primary-foreground: 225 20% 8%;
+
+    --secondary: 228 15% 14%;
+    --secondary-foreground: 40 20% 90%;
+
+    --muted: 228 15% 13%;
+    --muted-foreground: 228 10% 60%;
+
+    --accent: 16 94% 58%;
+    --accent-foreground: 40 20% 96%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 228 15% 18%;
+    --input: 228 15% 18%;
+    --ring: 39 96% 60%;
+
+    --radius: 1rem;
+
+    --gold-glow: 39 96% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background font-body text-foreground antialiased;
+    background-image:
+      radial-gradient(circle at top, rgba(255, 187, 85, 0.08), transparent 28%),
+      radial-gradient(circle at bottom right, rgba(255, 119, 46, 0.08), transparent 26%),
+      linear-gradient(180deg, rgba(9, 9, 14, 1), rgba(9, 9, 14, 1));
+  }
+
+  section[id] {
+    scroll-margin-top: 6.5rem;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+
+  ::selection {
+    background: rgba(255, 176, 58, 0.28);
+    color: white;
+  }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(39, 96%, 60%), hsl(45, 100%, 75%), hsl(24, 96%, 62%));
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 30px -5px hsl(39 96% 60% / 0.4), 0 0 60px -10px hsl(39 96% 60% / 0.18);
+  }
+
+  .glow-accent {
+    box-shadow: 0 0 30px -5px hsl(16 94% 58% / 0.42), 0 0 60px -10px hsl(16 94% 58% / 0.18);
+  }
+
+  .fade-in {
+    animation: fadeInUp 0.9s ease-out forwards;
+    opacity: 0;
+  }
+
+  .fade-in-delay-1 {
+    animation-delay: 0.12s;
+  }
+
+  .fade-in-delay-2 {
+    animation-delay: 0.24s;
+  }
+
+  .fade-in-delay-3 {
+    animation-delay: 0.36s;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(39 96% 60% / 0.2);
+  }
+  50% {
+    box-shadow: 0 0 42px hsl(39 96% 60% / 0.38);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2.2s ease-in-out infinite;
+}

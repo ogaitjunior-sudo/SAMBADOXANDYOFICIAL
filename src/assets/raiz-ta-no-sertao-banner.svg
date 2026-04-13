@@ -1,0 +1,110 @@
+<svg width="1600" height="460" viewBox="0 0 1600 460" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky" x1="800" y1="0" x2="800" y2="460" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EED8A7" />
+      <stop offset="0.58" stop-color="#F5E7C4" />
+      <stop offset="1" stop-color="#FAF3E4" />
+    </linearGradient>
+    <linearGradient id="dune" x1="800" y1="255" x2="800" y2="460" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D8B06F" />
+      <stop offset="1" stop-color="#C68D4A" />
+    </linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#A25D2B" />
+      <stop offset="1" stop-color="#814318" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="8" flood-color="#5E3113" flood-opacity="0.18" />
+    </filter>
+  </defs>
+
+  <rect width="1600" height="460" rx="34" fill="url(#sky)" />
+
+  <g opacity="0.5">
+    <ellipse cx="210" cy="80" rx="88" ry="26" fill="#FFF7E8" />
+    <ellipse cx="278" cy="70" rx="64" ry="20" fill="#FFF7E8" />
+    <ellipse cx="1350" cy="62" rx="94" ry="24" fill="#FFF7E8" />
+    <ellipse cx="1432" cy="74" rx="72" ry="20" fill="#FFF7E8" />
+  </g>
+
+  <path d="M0 308C109 252 248 249 382 278C470 297 579 322 735 325C887 328 998 294 1106 275C1283 243 1454 254 1600 319V460H0V308Z" fill="url(#dune)" />
+  <path d="M0 341C117 301 269 308 384 335C507 364 650 382 833 369C1016 356 1117 306 1288 308C1390 309 1493 327 1600 370V460H0V341Z" fill="#D5A15D" />
+
+  <g fill="#7E8B28" stroke="#4D5112" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M147 370V140C147 122 161 108 179 108C196 108 210 122 210 140V370" />
+    <path d="M179 220H127C109 220 95 206 95 188C95 170 109 156 127 156H147" />
+    <path d="M179 278H111C92 278 78 263 78 244C78 226 92 211 111 211H147" />
+    <path d="M179 195H232C250 195 264 180 264 162C264 144 250 129 232 129H210" />
+    <path d="M179 305H244C262 305 276 291 276 273C276 255 262 241 244 241H210" />
+
+    <path d="M302 376V208C302 191 315 178 332 178C349 178 362 191 362 208V376" />
+    <path d="M332 265H286C270 265 258 252 258 237C258 221 270 209 286 209H302" />
+    <path d="M332 242H378C394 242 406 229 406 214C406 198 394 186 378 186H362" />
+  </g>
+
+  <g fill="#92A52A" stroke="#5B6414" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M1234 386V250C1234 233 1247 220 1264 220C1281 220 1294 233 1294 250V386" />
+    <path d="M1264 306H1219C1204 306 1192 294 1192 279C1192 263 1204 251 1219 251H1234" />
+    <path d="M1264 285H1309C1324 285 1336 273 1336 258C1336 243 1324 231 1309 231H1294" />
+    <path d="M1337 391V284C1337 271 1347 261 1361 261C1374 261 1385 271 1385 284V391" />
+  </g>
+
+  <g fill="#C98F27" stroke="#915F18" stroke-width="3">
+    <ellipse cx="1264" cy="280" rx="13" ry="18" />
+    <ellipse cx="1292" cy="255" rx="12" ry="17" />
+    <ellipse cx="1216" cy="279" rx="12" ry="16" />
+    <ellipse cx="1339" cy="316" rx="12" ry="16" />
+    <ellipse cx="1361" cy="297" rx="12" ry="16" />
+    <ellipse cx="1382" cy="276" rx="12" ry="16" />
+  </g>
+
+  <g fill="#D24F39">
+    <circle cx="1264" cy="248" r="7" />
+    <circle cx="1292" cy="223" r="7" />
+    <circle cx="1216" cy="247" r="7" />
+    <circle cx="1339" cy="285" r="7" />
+    <circle cx="1361" cy="266" r="7" />
+    <circle cx="1382" cy="245" r="7" />
+  </g>
+
+  <g filter="url(#shadow)">
+    <text x="800" y="120" text-anchor="middle" fill="#F7B22F" font-size="92" font-family="'Trebuchet MS', 'Segoe UI', sans-serif" font-weight="900" stroke="#4C220D" stroke-width="18" paint-order="stroke">
+      Samba
+    </text>
+    <text x="800" y="205" text-anchor="middle" fill="#F7B22F" font-size="92" font-family="'Trebuchet MS', 'Segoe UI', sans-serif" font-weight="900" stroke="#4C220D" stroke-width="18" paint-order="stroke">
+      do Xandy
+    </text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <path d="M657 220H943L924 292H676L657 220Z" fill="#F0D6A0" stroke="#8C5620" stroke-width="6" />
+    <path d="M676 292L646 326L683 319L701 292H676Z" fill="#C48A41" stroke="#8C5620" stroke-width="6" />
+    <path d="M924 292L954 326L917 319L899 292H924Z" fill="#C48A41" stroke="#8C5620" stroke-width="6" />
+    <text x="800" y="271" text-anchor="middle" fill="#2F1B0C" font-size="42" font-family="'Trebuchet MS', 'Segoe UI', sans-serif" font-weight="800">
+      A RAIZ TA NO SERTAO
+    </text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <path d="M724 92C735 61 773 38 814 38C851 38 887 58 900 86L897 220H724V92Z" fill="#C87922" stroke="#6D3613" stroke-width="8" />
+    <rect x="756" y="93" width="112" height="141" rx="18" fill="#E8AA4E" stroke="#6D3613" stroke-width="7" />
+    <circle cx="812" cy="153" r="14" fill="#6D3613" />
+    <path d="M812 168V226" stroke="#6D3613" stroke-width="8" stroke-linecap="round" />
+    <path d="M783 110L841 189" stroke="#6D3613" stroke-width="8" stroke-linecap="round" />
+    <path d="M841 110L783 189" stroke="#6D3613" stroke-width="8" stroke-linecap="round" />
+  </g>
+
+  <g filter="url(#shadow)">
+    <path d="M1408 116L1516 100L1514 240L1408 248L1408 116Z" fill="url(#wood)" stroke="#6C3411" stroke-width="6" />
+    <path d="M1512 244L1518 395" stroke="#6C3411" stroke-width="14" stroke-linecap="round" />
+    <text x="1462" y="156" text-anchor="middle" fill="#FFF7EE" font-size="28" font-family="'Trebuchet MS', 'Segoe UI', sans-serif" font-weight="900">
+      Samba
+    </text>
+    <text x="1462" y="188" text-anchor="middle" fill="#FFF7EE" font-size="28" font-family="'Trebuchet MS', 'Segoe UI', sans-serif" font-weight="900">
+      do
+    </text>
+    <text x="1462" y="220" text-anchor="middle" fill="#FFF7EE" font-size="28" font-family="'Trebuchet MS', 'Segoe UI', sans-serif" font-weight="900">
+      Xandy
+    </text>
+  </g>
+</svg>
