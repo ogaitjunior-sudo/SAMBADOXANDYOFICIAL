@@ -51,13 +51,6 @@ const Navbar = () => {
               {item.label}
             </button>
           ))}
-          <button
-            type="button"
-            onClick={() => scrollTo(siteContent.hero.primaryAction.href)}
-            className="rounded-full bg-accent px-6 py-3 text-xs font-semibold uppercase tracking-[0.28em] text-accent-foreground transition-all hover:brightness-110"
-          >
-            {siteContent.hero.primaryAction.label}
-          </button>
         </div>
 
         <button
@@ -93,13 +86,6 @@ const Navbar = () => {
                 {item.label}
               </button>
             ))}
-            <button
-              type="button"
-              onClick={() => scrollTo(siteContent.hero.primaryAction.href)}
-              className="block w-full rounded-2xl bg-accent px-4 py-3 text-left text-sm font-semibold uppercase tracking-[0.2em] text-accent-foreground"
-            >
-              {siteContent.hero.primaryAction.label}
-            </button>
           </div>
         </div>
       )}

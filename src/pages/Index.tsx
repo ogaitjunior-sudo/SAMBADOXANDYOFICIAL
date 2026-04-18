@@ -6,6 +6,7 @@ import FeaturedVideoSection from "../components/FeaturedVideoSection";
 import AgendaSection from "../components/AgendaSection";
 import GallerySection from "../components/GallerySection";
 import ProjectsSection from "../components/ProjectsSection";
+import ProdutoraSection from "../components/ProdutoraSection";
 import SocialSection from "../components/SocialSection";
 import BookingSection from "../components/BookingSection";
 import Footer from "../components/Footer";
@@ -21,6 +22,7 @@ const Index = () => {
       <AgendaSection />
       <GallerySection />
       <ProjectsSection />
+      <ProdutoraSection />
       <SocialSection />
       <BookingSection />
       <Footer />

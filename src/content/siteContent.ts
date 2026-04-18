@@ -7,9 +7,11 @@ export const siteContent = {
     instagram: "https://www.instagram.com/sambadoxandy/",
     youtube: "https://www.youtube.com/@Sambadoxandy",
     email: "mailto:contato@sambadoxandy.com.br",
+    producerInstagram: "https://www.instagram.com/brilhoestrelar/",
   },
   media: {
     heroVideoSrc: "/media/samba-do-xandy-live.mp4",
+    heroPosterSrc: "/media/sambadoxandy.png",
   },
   contact: {
     emailAddress: "contato@sambadoxandy.com.br",
@@ -22,6 +24,7 @@ export const siteContent = {
     { label: "Vídeos", href: "#videos" },
     { label: "Agenda", href: "#agenda" },
     { label: "Galeria", href: "#galeria" },
+    { label: "Produtora", href: "#produtora" },
     { label: "Contato", href: "#contato" },
   ],
   hero: {
@@ -83,7 +86,8 @@ export const siteContent = {
   gallery: {
     eyebrow: "Galeria",
     title: "Momentos reais da banda entre palco, bastidores e presença na mídia",
-    description: "Uma seleção com registros autênticos do Samba do Xandy em shows, projetos especiais e participações ao vivo.",
+    description:
+      "Uma seleção com registros autênticos do Samba do Xandy em shows, projetos especiais e participações ao vivo.",
   },
   artistShowcase: {
     eyebrow: "Identidade artística",
@@ -93,7 +97,7 @@ export const siteContent = {
         "Por trás de cada nota, existem pessoas, histórias e paixão. Conheça os integrantes e descubra quem faz tudo acontecer.",
     },
     discografia: {
-      title: "Pagode é sentimento… e aqui tá tudo registrado.",
+      title: "Pagode é sentimento... e aqui tá tudo registrado.",
       description: "",
     },
   },
@@ -109,5 +113,71 @@ export const siteContent = {
     title: "A Raiz Tá no Sertão",
     description:
       "Projeto audiovisual que valoriza as raízes do samba no interior da Bahia, conectando tradição, cultura popular e performance ao vivo.",
+  },
+  productionPartner: {
+    eyebrow: "PRODUTORA",
+    title: "Parceria com a Brilho Estrelar",
+    intro:
+      "Uma conexão criativa e institucional que fortalece a imagem oficial do Samba do Xandy com sofisticação, estratégia e alto padrão visual.",
+    highlights: [
+      {
+        title: "Olhar criativo",
+        description: "Direção visual pensada para traduzir a energia do palco com elegância e consistência.",
+      },
+      {
+        title: "Profissionalismo",
+        description: "Cuidado em cada entrega, da comunicação institucional aos materiais que representam a banda.",
+      },
+      {
+        title: "Excelência visual",
+        description: "Acabamento premium para reforçar credibilidade, presença digital e posicionamento de marca.",
+      },
+    ],
+    body: [
+      "O Samba do Xandy tem a honra de contar com a Brilho Estrelar como parceira em seus projetos.",
+      "Mais do que uma produtora, a Brilho Estrelar se destaca pelo seu olhar criativo, profissionalismo e alto padrão de qualidade, contribuindo diretamente para o fortalecimento da nossa identidade, imagem e presença digital.",
+      "Cada trabalho desenvolvido reflete cuidado, estratégia e excelência - sempre alinhado com a energia e a essência que levamos para o palco.",
+      "Essa parceria representa a união entre talento artístico e direção criativa, elevando o nível dos nossos projetos e consolidando um posicionamento cada vez mais forte no cenário.",
+    ],
+    quote:
+      "Para o Samba do Xandy, é motivo de orgulho caminhar ao lado de uma produtora que realmente faz a diferença.",
+    commitments: [
+      {
+        title: "Identidade fortalecida",
+        description: "Uma comunicação que respeita a essência do projeto e amplia seu valor percebido.",
+      },
+      {
+        title: "Presença mais forte",
+        description: "Conteúdos e direção visual que ampliam impacto, leitura de marca e conexão com o público.",
+      },
+      {
+        title: "Parceria que soma",
+        description: "Alinhamento criativo para sustentar crescimento com autenticidade, cuidado e consistência.",
+      },
+    ],
+    logo: {
+      kicker: "Assinatura visual",
+      title: "Brilho Estrelar",
+      badge: "Parceira oficial",
+      alt: "Logo da produtora Brilho Estrelar",
+      description:
+        "A marca da produtora aparece como selo institucional da parceria, reforçando sofisticação, autoridade e identidade visual.",
+    },
+    representative: {
+      kicker: "Autoridade e reconhecimento",
+      title: "Presença que transmite credibilidade",
+      alt: "Representante da Brilho Estrelar em um evento de premiação",
+      description:
+        "A imagem institucional reforça reconhecimento, profissionalismo e a consistência de uma parceria construída com visão e alto nível de entrega.",
+    },
+    contact: {
+      eyebrow: "Contato da produtora",
+      title: "Entre em contato com a Brilho Estrelar",
+      description:
+        "Para conhecer mais sobre a Brilho Estrelar, acompanhar seus projetos e entrar em contato, acesse o Instagram oficial da produtora.",
+      handle: "@brilhoestrelar",
+      ctaLabel: "Acessar Instagram",
+    },
+    heroCtaLabel: "Falar com a produtora",
   },
 } as const;

@@ -7,7 +7,7 @@ import { siteContent } from "@/content/siteContent";
 const HeroSection = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [videoFailed, setVideoFailed] = useState(false);
-  const [videoStarted, setVideoStarted] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
   const [soundEnabled, setSoundEnabled] = useState(false);
 
   const scrollTo = (href: string) => {
@@ -39,21 +39,23 @@ const HeroSection = () => {
       }
     };
 
-    const handlePlaying = () => {
-      setVideoStarted(true);
+    const handleReady = () => {
+      setVideoReady(true);
     };
 
     void tryAutoplay();
+    video.addEventListener("loadeddata", handleReady);
     video.addEventListener("loadeddata", tryAutoplay);
+    video.addEventListener("canplay", handleReady);
     video.addEventListener("canplay", tryAutoplay);
-    video.addEventListener("playing", handlePlaying);
     window.addEventListener("pageshow", tryAutoplay);
     document.addEventListener("visibilitychange", handleVisibility);
 
     return () => {
+      video.removeEventListener("loadeddata", handleReady);
       video.removeEventListener("loadeddata", tryAutoplay);
+      video.removeEventListener("canplay", handleReady);
       video.removeEventListener("canplay", tryAutoplay);
-      video.removeEventListener("playing", handlePlaying);
       window.removeEventListener("pageshow", tryAutoplay);
       document.removeEventListener("visibilitychange", handleVisibility);
     };
@@ -88,7 +90,7 @@ const HeroSection = () => {
           alt=""
           aria-hidden="true"
           className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
-            videoStarted && !videoFailed ? "opacity-0" : "opacity-100"
+            videoReady && !videoFailed ? "opacity-0" : "opacity-100"
           }`}
         />
 
@@ -99,11 +101,17 @@ const HeroSection = () => {
             muted
             loop
             playsInline
-            preload="auto"
-            className="absolute inset-0 h-full w-full object-cover object-center"
+            preload="metadata"
+            poster={siteContent.media.heroPosterSrc}
+            className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-700 ${
+              videoReady ? "opacity-100" : "opacity-0"
+            }`}
             aria-hidden="true"
-            onPlaying={() => setVideoStarted(true)}
-            onError={() => setVideoFailed(true)}
+            onLoadedData={() => setVideoReady(true)}
+            onError={() => {
+              setVideoFailed(true);
+              setVideoReady(false);
+            }}
           >
             <source src={siteContent.media.heroVideoSrc} type="video/mp4" />
           </video>

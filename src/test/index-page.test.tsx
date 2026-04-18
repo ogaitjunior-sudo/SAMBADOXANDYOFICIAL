@@ -13,6 +13,7 @@ describe("Index page", () => {
     expect(screen.getByRole("button", { name: /v.deos/i })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /agenda/i })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /galeria/i })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /produtora/i })).toBeInTheDocument();
     expect(screen.getAllByRole("button", { name: /contato/i }).length).toBeGreaterThan(0);
     expect(screen.getAllByRole("heading", { name: /samba do xandy/i }).length).toBeGreaterThan(0);
     expect(screen.getAllByRole("button", { name: /solicitar or.amento/i }).length).toBeGreaterThan(0);
@@ -24,6 +25,7 @@ describe("Index page", () => {
     expect(screen.getByRole("heading", { name: /^paulo santana$/i })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /^tiago reis$/i })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /^ricardo godoy$/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /parceria com a brilho estrelar/i })).toBeInTheDocument();
     expect(screen.getAllByAltText(/a raiz t.*no sert.o/i).length).toBeGreaterThan(0);
     expect(heroVideo).toBeInTheDocument();
     expect(featuredVideo).toBeInTheDocument();
@@ -32,6 +34,10 @@ describe("Index page", () => {
     expect(heroVideo).toHaveAttribute("loop");
     expect((heroVideo as HTMLVideoElement).muted).toBe(true);
     expect((heroVideo as HTMLVideoElement).playsInline).toBe(true);
+    expect(screen.getByRole("link", { name: /acessar instagram/i })).toHaveAttribute(
+      "href",
+      "https://www.instagram.com/brilhoestrelar/",
+    );
   });
 
   it("switches between integrantes and discografia without reloading the page", async () => {
