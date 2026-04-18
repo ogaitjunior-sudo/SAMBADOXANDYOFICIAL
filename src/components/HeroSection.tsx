@@ -3,6 +3,8 @@ import { ArrowRight, Instagram, MoveDown, Volume2, VolumeX, Youtube } from "luci
 import logo from "@/assets/logo-samba-do-xandy.png";
 import { siteContent } from "@/content/siteContent";
 
+const canForceVideoLoad = () => typeof navigator !== "undefined" && !navigator.userAgent.includes("jsdom");
+
 const HeroSection = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [videoFailed, setVideoFailed] = useState(false);
@@ -37,15 +39,21 @@ const HeroSection = () => {
       }
     };
 
+    video.preload = "auto";
+    if (canForceVideoLoad()) {
+      video.load();
+    }
     void tryAutoplay();
     video.addEventListener("loadeddata", tryAutoplay);
     video.addEventListener("canplay", tryAutoplay);
+    video.addEventListener("canplaythrough", tryAutoplay);
     window.addEventListener("pageshow", tryAutoplay);
     document.addEventListener("visibilitychange", handleVisibility);
 
     return () => {
       video.removeEventListener("loadeddata", tryAutoplay);
       video.removeEventListener("canplay", tryAutoplay);
+      video.removeEventListener("canplaythrough", tryAutoplay);
       window.removeEventListener("pageshow", tryAutoplay);
       document.removeEventListener("visibilitychange", handleVisibility);
     };
@@ -82,7 +90,7 @@ const HeroSection = () => {
             muted
             loop
             playsInline
-            preload="metadata"
+            preload="auto"
             className="absolute inset-0 h-full w-full object-cover object-center"
             aria-hidden="true"
             onError={() => setVideoFailed(true)}

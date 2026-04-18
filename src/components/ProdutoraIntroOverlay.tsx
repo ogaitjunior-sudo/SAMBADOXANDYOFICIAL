@@ -6,6 +6,7 @@ import { siteContent } from "@/content/siteContent";
 const INTRO_EVENT = "produtora:intro-request";
 const SESSION_KEY = "samba-do-xandy:produtora-intro-seen:v2";
 const MAX_INTRO_DURATION_MS = 3800;
+const canForceVideoLoad = () => typeof navigator !== "undefined" && !navigator.userAgent.includes("jsdom");
 
 const backdropVariants = {
   hidden: { opacity: 0 },
@@ -58,6 +59,7 @@ const scrollToProdutora = () => {
 
 const ProdutoraIntroOverlay = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const warmupVideoRef = useRef<HTMLVideoElement | null>(null);
   const finishTimerRef = useRef<number | null>(null);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -82,6 +84,27 @@ const ProdutoraIntroOverlay = () => {
       scrollToProdutora();
     }, 40);
   };
+
+  useEffect(() => {
+    const warmupVideo = document.createElement("video");
+    warmupVideo.preload = "auto";
+    warmupVideo.muted = true;
+    warmupVideo.playsInline = true;
+    warmupVideo.src = siteContent.media.producerIntroVideoSrc;
+    if (canForceVideoLoad()) {
+      warmupVideo.load();
+    }
+    warmupVideoRef.current = warmupVideo;
+
+    return () => {
+      warmupVideo.pause();
+      warmupVideo.removeAttribute("src");
+      if (canForceVideoLoad()) {
+        warmupVideo.load();
+      }
+      warmupVideoRef.current = null;
+    };
+  }, []);
 
   useEffect(() => {
     const handleRequest = () => {
@@ -126,6 +149,10 @@ const ProdutoraIntroOverlay = () => {
 
     if (video) {
       try {
+        video.preload = "auto";
+        if (canForceVideoLoad()) {
+          video.load();
+        }
         video.currentTime = 0;
         const playAttempt = video.play();
 
