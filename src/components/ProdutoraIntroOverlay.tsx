@@ -177,7 +177,7 @@ const ProdutoraIntroOverlay = () => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="relative z-10 w-full max-w-3xl"
+            className="relative z-10 inline-block max-w-full"
           >
             <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
               <img
@@ -196,7 +196,7 @@ const ProdutoraIntroOverlay = () => {
                 playsInline
                 preload="auto"
                 data-testid="produtora-intro-video"
-                className="aspect-video w-full object-cover object-center"
+                className="block h-auto max-h-[78vh] w-auto max-w-full bg-black object-contain object-center"
                 onEnded={finishIntro}
               >
                 <source src={siteContent.media.producerIntroVideoSrc} type="video/mp4" />
