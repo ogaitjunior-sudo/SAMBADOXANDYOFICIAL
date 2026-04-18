@@ -5,8 +5,10 @@ import { siteContent } from "@/content/siteContent";
 
 const INTRO_EVENT = "produtora:intro-request";
 const SESSION_KEY = "samba-do-xandy:produtora-intro-seen:v2";
-const MAX_INTRO_DURATION_MS = 3800;
+const MAX_VIDEO_DURATION_MS = 3800;
+const LOGO_HOLD_DURATION_MS = 1200;
 const canForceVideoLoad = () => typeof navigator !== "undefined" && !navigator.userAgent.includes("jsdom");
+type IntroStage = "video" | "logo";
 
 const backdropVariants = {
   hidden: { opacity: 0 },
@@ -62,6 +64,7 @@ const ProdutoraIntroOverlay = () => {
   const warmupVideoRef = useRef<HTMLVideoElement | null>(null);
   const finishTimerRef = useRef<number | null>(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [stage, setStage] = useState<IntroStage>("video");
 
   const clearFinishTimer = () => {
     if (finishTimerRef.current !== null) {
@@ -83,6 +86,14 @@ const ProdutoraIntroOverlay = () => {
     window.setTimeout(() => {
       scrollToProdutora();
     }, 40);
+  };
+
+  const showStaticLogo = () => {
+    clearFinishTimer();
+    setStage("logo");
+    finishTimerRef.current = window.setTimeout(() => {
+      finishIntro();
+    }, LOGO_HOLD_DURATION_MS);
   };
 
   useEffect(() => {
@@ -121,6 +132,7 @@ const ProdutoraIntroOverlay = () => {
         return;
       }
 
+      setStage("video");
       setIsOpen(true);
     };
 
@@ -143,9 +155,10 @@ const ProdutoraIntroOverlay = () => {
     const video = videoRef.current;
 
     clearFinishTimer();
+    setStage("video");
     finishTimerRef.current = window.setTimeout(() => {
-      finishIntro();
-    }, MAX_INTRO_DURATION_MS);
+      showStaticLogo();
+    }, MAX_VIDEO_DURATION_MS);
 
     if (video) {
       try {
@@ -216,18 +229,52 @@ const ProdutoraIntroOverlay = () => {
             </div>
 
             <div className="relative overflow-hidden rounded-[32px] border border-white/10 bg-[linear-gradient(180deg,rgba(18,19,26,0.94),rgba(8,9,13,0.98))] shadow-[0_30px_90px_rgba(0,0,0,0.48)]">
-              <video
-                ref={videoRef}
-                autoPlay
-                muted
-                playsInline
-                preload="auto"
-                data-testid="produtora-intro-video"
-                className="block h-auto max-h-[78vh] w-auto max-w-full bg-black object-contain object-center"
-                onEnded={finishIntro}
-              >
-                <source src={siteContent.media.producerIntroVideoSrc} type="video/mp4" />
-              </video>
+              <AnimatePresence mode="wait" initial={false}>
+                {stage === "video" ? (
+                  <motion.div
+                    key="produtora-intro-video"
+                    initial={{ opacity: 0.96, scale: 1.01 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.992 }}
+                    transition={{ duration: 0.32, ease: "easeInOut" }}
+                  >
+                    <video
+                      ref={videoRef}
+                      autoPlay
+                      muted
+                      playsInline
+                      preload="auto"
+                      data-testid="produtora-intro-video"
+                      className="block h-auto max-h-[78vh] w-auto max-w-full bg-black object-contain object-center"
+                      onEnded={showStaticLogo}
+                    >
+                      <source src={siteContent.media.producerIntroVideoSrc} type="video/mp4" />
+                    </video>
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="produtora-intro-logo"
+                    data-testid="produtora-intro-logo"
+                    className="flex min-h-[420px] w-[min(88vw,460px)] max-w-full items-center justify-center bg-[radial-gradient(circle_at_center,rgba(255,191,92,0.18),rgba(14,15,20,0.96)_48%,rgba(7,8,11,1)_100%)] px-6 py-8 md:px-10"
+                    initial={{ opacity: 0, scale: 0.985 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    <div className="relative flex flex-col items-center justify-center gap-5 text-center">
+                      <div className="absolute inset-0 scale-[1.18] rounded-full bg-primary/10 blur-3xl" />
+                      <img
+                        src={logoBrilhoEstrelar}
+                        alt="Brilho Estrelar"
+                        className="relative z-10 w-[220px] max-w-[58vw] object-contain drop-shadow-[0_0_36px_rgba(255,191,92,0.18)] md:w-[280px]"
+                      />
+                      <p className="relative z-10 text-[10px] font-semibold uppercase tracking-[0.34em] text-primary/82 md:text-[11px]">
+                        Parceria oficial
+                      </p>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,7,10,0.12),rgba(6,7,10,0.18)_35%,rgba(6,7,10,0.72))]" />
 

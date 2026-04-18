@@ -123,7 +123,7 @@ const memberCards: MemberCard[] = [
   {
     name: "Léo Lapa",
     role: "Produção e Percussão",
-    bio: "Essa pessoa é sinônimo de alegria, carinho e verdade.",
+    bio: "Essa pessoa é sinônimo de alegria, carinho e verdade, carregando um amor genuíno pelo samba e pelo projeto. Sua presença transmite energia, dedicação e paixão, sempre fortalecendo tudo ao seu redor com autenticidade e compromisso.",
     photo: leoLapa,
     mediaClass: "aspect-[4/5]",
     frameClass: "",
@@ -137,6 +137,17 @@ const memberCards: MemberCard[] = [
     ] as SocialLink[],
   },
 ];
+
+const displayMemberCards = memberCards.map((member) =>
+  member.photo === leoLapa
+    ? {
+        ...member,
+        name: "Léo Lapa",
+        role: "Produção e Percussão",
+        bio: "Essa pessoa é sinônimo de alegria, carinho e verdade, carregando um amor genuíno pelo samba e pelo projeto. Sua presença transmite energia, dedicação e paixão, sempre fortalecendo tudo ao seu redor com autenticidade e compromisso.",
+      }
+    : member,
+);
 
 const xandyBioParagraphs = [
   "O Samba do Xandy nasce da consolidação da trajetória musical de Xandy Godoy, artista com mais de 15 anos de experiência na música.",
@@ -183,8 +194,8 @@ const roleIcons = [Mic2, Music2, Disc3, Radio, Music2, Mic2, Radio];
 const ArtistShowcaseSection = () => {
   const [activeTab, setActiveTab] = useState<ArtistTab>("integrantes");
   const activeIntro = siteContent.artistShowcase[activeTab];
-  const featuredMember = memberCards[0];
-  const supportingMembers = memberCards.slice(1);
+  const featuredMember = displayMemberCards[0];
+  const supportingMembers = displayMemberCards.slice(1);
   const FeaturedRoleIcon = roleIcons[0];
 
   useEffect(() => {
