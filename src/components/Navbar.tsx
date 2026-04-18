@@ -26,6 +26,11 @@ const Navbar = () => {
       return;
     }
 
+    if (href === "#produtora") {
+      window.dispatchEvent(new CustomEvent("produtora:intro-request"));
+      return;
+    }
+
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
   };
 

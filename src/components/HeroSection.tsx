@@ -1,13 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Instagram, MoveDown, Volume2, VolumeX, Youtube } from "lucide-react";
-import gallery1 from "@/assets/gallery-1.jpg";
 import logo from "@/assets/logo-samba-do-xandy.png";
 import { siteContent } from "@/content/siteContent";
 
 const HeroSection = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [videoFailed, setVideoFailed] = useState(false);
-  const [videoReady, setVideoReady] = useState(false);
   const [soundEnabled, setSoundEnabled] = useState(false);
 
   const scrollTo = (href: string) => {
@@ -29,7 +27,7 @@ const HeroSection = () => {
       try {
         await video.play();
       } catch {
-        // Mantem o fallback visual enquanto o navegador prepara a midia.
+        // Mantem a tentativa de autoplay sem interromper a abertura da pagina.
       }
     };
 
@@ -39,22 +37,14 @@ const HeroSection = () => {
       }
     };
 
-    const handleReady = () => {
-      setVideoReady(true);
-    };
-
     void tryAutoplay();
-    video.addEventListener("loadeddata", handleReady);
     video.addEventListener("loadeddata", tryAutoplay);
-    video.addEventListener("canplay", handleReady);
     video.addEventListener("canplay", tryAutoplay);
     window.addEventListener("pageshow", tryAutoplay);
     document.addEventListener("visibilitychange", handleVisibility);
 
     return () => {
-      video.removeEventListener("loadeddata", handleReady);
       video.removeEventListener("loadeddata", tryAutoplay);
-      video.removeEventListener("canplay", handleReady);
       video.removeEventListener("canplay", tryAutoplay);
       window.removeEventListener("pageshow", tryAutoplay);
       document.removeEventListener("visibilitychange", handleVisibility);
@@ -85,15 +75,6 @@ const HeroSection = () => {
   return (
     <section id="hero" className="relative flex min-h-screen items-center overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <img
-          src={gallery1}
-          alt=""
-          aria-hidden="true"
-          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
-            videoReady && !videoFailed ? "opacity-0" : "opacity-100"
-          }`}
-        />
-
         {!videoFailed ? (
           <video
             ref={videoRef}
@@ -102,22 +83,13 @@ const HeroSection = () => {
             loop
             playsInline
             preload="metadata"
-            poster={siteContent.media.heroPosterSrc}
-            className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-700 ${
-              videoReady ? "opacity-100" : "opacity-0"
-            }`}
+            className="absolute inset-0 h-full w-full object-cover object-center"
             aria-hidden="true"
-            onLoadedData={() => setVideoReady(true)}
-            onError={() => {
-              setVideoFailed(true);
-              setVideoReady(false);
-            }}
+            onError={() => setVideoFailed(true)}
           >
             <source src={siteContent.media.heroVideoSrc} type="video/mp4" />
           </video>
-        ) : (
-          <img src={gallery1} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full object-cover" />
-        )}
+        ) : null}
 
         <div className="absolute inset-0 bg-black/82" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,190,92,0.12),transparent_34%)]" />

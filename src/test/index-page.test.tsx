@@ -2,6 +2,10 @@ import { fireEvent, render, screen, waitFor, within } from "@testing-library/rea
 import Index from "@/pages/Index";
 
 describe("Index page", () => {
+  beforeEach(() => {
+    window.sessionStorage.clear();
+  });
+
   it("renders the restored landing structure with hero video and main navigation", () => {
     const { container } = render(<Index />);
     const heroVideo = container.querySelector("video");
@@ -132,5 +136,24 @@ describe("Index page", () => {
     );
     expect(screen.queryByPlaceholderText(/e-mail/i)).not.toBeInTheDocument();
     expect(screen.queryByPlaceholderText(/conte sobre seu evento/i)).not.toBeInTheDocument();
+  });
+
+  it("shows the produtora intro only the first time during the session", async () => {
+    render(<Index />);
+
+    fireEvent.click(screen.getByRole("button", { name: /produtora/i }));
+
+    expect(screen.getByRole("dialog", { name: /intro da produtora/i })).toBeInTheDocument();
+    expect(screen.getByTestId("produtora-intro-video")).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole("button", { name: /pular intro/i }));
+
+    await waitFor(() => {
+      expect(screen.queryByRole("dialog", { name: /intro da produtora/i })).not.toBeInTheDocument();
+    });
+
+    fireEvent.click(screen.getByRole("button", { name: /produtora/i }));
+
+    expect(screen.queryByRole("dialog", { name: /intro da produtora/i })).not.toBeInTheDocument();
   });
 });

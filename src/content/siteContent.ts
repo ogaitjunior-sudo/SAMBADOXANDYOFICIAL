@@ -11,7 +11,7 @@ export const siteContent = {
   },
   media: {
     heroVideoSrc: "/media/samba-do-xandy-live.mp4",
-    heroPosterSrc: "/media/sambadoxandy.png",
+    producerIntroVideoSrc: "/media/brilho-estrelar-intro.mp4",
   },
   contact: {
     emailAddress: "contato@sambadoxandy.com.br",
@@ -119,6 +119,13 @@ export const siteContent = {
     title: "Parceria com a Brilho Estrelar",
     intro:
       "Uma conexão criativa e institucional que fortalece a imagem oficial do Samba do Xandy com sofisticação, estratégia e alto padrão visual.",
+    introDetails: [
+      "Mais do que uma parceria, esse projeto representa a união entre visão estratégica, direção criativa e excelência em cada detalhe.",
+      "A Brilho Estrelar atua diretamente no fortalecimento da presença digital do Samba do Xandy, trazendo consistência, identidade e impacto visual para cada material desenvolvido.",
+      "Cada criação é pensada com propósito, cuidado e um alto padrão de qualidade, sempre respeitando a essência da banda e a energia que ela transmite dentro e fora dos palcos.",
+      "Essa conexão vai além da estética. Trata-se de posicionamento, construção de marca e evolução constante, elevando a imagem oficial do Samba do Xandy com sofisticação e personalidade.",
+      "É sobre transformar presença em autoridade e imagem em algo memorável.",
+    ],
     highlights: [
       {
         title: "Olhar criativo",
