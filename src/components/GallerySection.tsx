@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import programaBalancoGeral from "@/assets/gallery-custom/programa-balanco-geral.jpg";
 import projetoARaizTaNoSertao from "@/assets/gallery-custom/projeto-a-raiz-ta-no-sertao.jpg";
+import recebimentoTrofeuTvBahia from "@/assets/gallery-custom/recebimento-trofeu-tv-bahia.png";
 import showDia31RibeiraDoAmparo from "@/assets/gallery-custom/show-dia-31-ribeira-do-amparo.jpg";
 import showTiraFinoCiceroDantas from "@/assets/gallery-custom/show-tira-fino-cicero-dantas.jpg";
 import show from "@/assets/gallery-custom/show.jpg";
@@ -12,6 +13,12 @@ const galleryItems = [
   {
     src: programaBalancoGeral,
     alt: "Participacao do Samba do Xandy no programa Balanco Geral",
+    frameClass: "bg-[#06070d] p-2 md:p-3",
+    imageClass: "object-contain object-center",
+  },
+  {
+    src: recebimentoTrofeuTvBahia,
+    alt: "Recebimento do troféu e cobertura da TV Bahia, homenagem do Swing do Pelô.",
     frameClass: "bg-[#06070d] p-2 md:p-3",
     imageClass: "object-contain object-center",
   },
